@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="val.css">
+</head>
+<body>
+   
+    <!-- Valentine Popup Section -->
+     <div class="container">
+      <div class="valentine-section" id="valentineSection">
+        <div class="valentine-content" id="valentineContent">
+          <div class="cat-container">
+            <div class="heart-decoration">💖</div>
+            <div class="cat-face">
+              <div class="cat-ear-left"></div>
+              <div class="cat-ear-right"></div>
+              <div class="cat-eyes">
+                <div class="cat-eye"></div>
+                <div class="cat-eye"></div>
+              </div>
+              <div class="cat-nose"></div>
+              <div class="cat-blush-left"></div>
+              <div class="cat-blush-right"></div>
+            </div>
+          </div>
+
+          <h2 class="valentine-title">
+             Mummy you be my valentine?
+          </h2>
+
+          <div class="button-container">
+            <button class="valentine-btn yes-btn" id="yesBtn">Yes</button>
+            <button class="valentine-btn no-btn" id="noBtn">No</button>
+          </div>
+
+          <p class="shy-message">"No" seems a bit shy 😈</p>
+          <p class="credit-message">
+            Created by
+            <a  class="credit-color" href="https://www.instagram.com/nithesh_yn?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">Nithesh</a>
+           
+
+          </p>
+          </div>
+            <div class="success-message" id="successMessage">
+          <!-- Glitter Shower -->
+          <div class="glitter-container">
+            <div class="glitter"></div>
+            <div class="glitter"></div>
+            <div class="glitter"></div>
+            <div class="glitter"></div>
+            <div class="glitter"></div>
+            <div class="glitter"></div>
+            <div class="glitter"></div>
+            <div class="glitter"></div>
+            <div class="glitter"></div>
+            <div class="glitter"></div>
+            <div class="glitter"></div>
+            <div class="glitter"></div>
+            <div class="glitter"></div>
+            <div class="glitter"></div>
+            <div class="glitter"></div>
+            <div class="glitter"></div>
+            <div class="glitter"></div>
+            <div class="glitter"></div>
+            <div class="glitter"></div>
+            <div class="glitter"></div>
+          </div>
+
+          <!-- GIPHY Cute Hugging Cats Sticker -->
+          <div class="kissing-animation" id="kissingAnimation">
+            <img
+              src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExdTZzcDA2OXcyNmc5NTR0NTd6ZDZzeWlyMGNwZTE0bWMwY281Znh4NiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/qFmdpUKAFZ6rMobzzu/giphy.gif"
+              alt="Cute hugging cats"
+            />
+          </div>
+
+          <h2 class="success-text">I love you so much 💕💖</h2>
+          <p class="success-subtitle">
+            stay with me lifelong mummy🫂🫶🏻
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+ // Valentine section functionality
+ function initializeNoButton() {
+  const noBtn = document.getElementById("noBtn");
+  const yesBtn = document.getElementById("yesBtn");
+  const valentineContent = document.getElementById("valentineContent");
+  const successMessage = document.getElementById("successMessage");
+  const shyMessage = document.querySelector(".shy-message");
+
+  let noInteracted = false;
+
+  //------Function to show message-------
+  function showShyMessage() {
+  if (!noInteracted){
+    shyMessage.style.display = "block";
+    noInteracted = true
+   }
+  }
+
+  // -------- NO BUTTON HOVER (RUN AWAY) --------
+  noBtn.addEventListener("mouseenter", () => {
+    showShyMessage();
+    noBtn.classList.add("moving");
+
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+
+    const btnWidth = noBtn.offsetWidth;
+    const btnHeight = noBtn.offsetHeight;
+
+    const maxX = viewportWidth - btnWidth - 20;
+    const maxY = viewportHeight - btnHeight - 20;
+
+    const randomX = Math.max(20, Math.random() * maxX);
+    const randomY = Math.max(20, Math.random() * maxY);
+
+    noBtn.style.left = randomX + "px";
+    noBtn.style.top = randomY + "px";
+  });
+
+  // -------- MOBILE TOUCH SUPPORT --------
+  noBtn.addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    showShyMessage();
+    const event = new Event("mouseenter");
+    noBtn.dispatchEvent(event);
+  });
+
+  // -------- NO BUTTON CLICK --------
+  noBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    // Show shy message only first time
+ showShyMessage();    
+
+      // Make button escape
+    const event = new Event("mouseenter");
+    noBtn.dispatchEvent(event);
+  });
+
+  
+   
+  // -------- YES BUTTON CLICK --------
+  yesBtn.addEventListener("click", () => {
+    valentineContent.style.display = "none";
+    successMessage.style.display = "block";
+
+    // Show kissing animation with delay
+    setTimeout(() => {
+      document.getElementById("kissingAnimation").style.display = "block";
+    }, 300);
+  });
+}
+
+// 🔥 IMPORTANT – CALL FUNCTION
+initializeNoButton();
+
+
+    </script>
+
+
+</script>
+</body>
+</html>
